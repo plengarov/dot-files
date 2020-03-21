@@ -7,14 +7,25 @@ unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/plengarov/.zshrc'
+
+PLATFORM=`uname -s`
+
+if [ $PLATFORM = "Darwin" ]; then
+    zstyle :compinstall filename '/Users/plengarov/.zshrc'
+elif [ $PALTFORM = "Linux" ]; then
+    zstyle :compinstall filename '/home/plengarov/.zshrc'
+fi
 
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
 # Oh-my-zsh config
-export ZSH="/home/plengarov/.oh-my-zsh"
+if [ $PLATFORM = "Darwin" ]; then
+    export ZSH="/Users/plengarov/.oh-my-zsh"
+elif [ $PALTFORM = "Linux" ]; then
+    export ZSH="/home/plengarov/.oh-my-zsh"
+fi
 
 plugins=(
     git
@@ -30,7 +41,6 @@ source $ZSH/oh-my-zsh.sh
 # Custom config
 PROMPT='[%n@%m %~]$ '
 
-alias ls='ls --color=auto -F'
 alias la='ls -la'
 alias ll='ls -l'
 alias e='emacsclient -t'

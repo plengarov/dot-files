@@ -2,7 +2,7 @@
 BasedOnStyle: Google
 AccessModifierOffset: '-2'
 AlignAfterOpenBracket: Align
-AlignConsecutiveMacros: 'true'
+#AlignConsecutiveMacros: 'true'
 AlignConsecutiveAssignments: 'true'
 AlignConsecutiveDeclarations: 'true'
 AlignEscapedNewlines: Left

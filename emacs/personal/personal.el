@@ -3,7 +3,7 @@
 ;; Copyright (c) 2017 Pavel Lengarov
 ;;
 ;; Author: Pavel Lengarov <pavel.lengarov@gmail.com>
-;; URL: https://github.com/plengarov/emacs.d
+;; URL: https://github.com/plengarov/dot-files
 ;; Keywords: convenience
 
 ;; This file is not part of GNU Emacs.
@@ -29,15 +29,9 @@
 ;; Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 ;; Boston, MA 02110-1301, USA.
 
-
-;; install additional package for C/C++ development
 ;;; Code:
 (defvar package-list)
 (setq package-list '(ag
-                     clang-format
-                     flycheck
-                     modern-cpp-font-lock
-                     ggtags
                      org
                      org-bullets))
 
@@ -50,48 +44,8 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-
-;; Require flycheck to be present
-(require 'flycheck)
-;; Force flycheck to always use c++11 support. We use
-;; the clang language backend so this is set to clang
-(add-hook 'c++-mode-hook
-          (lambda () (setq flycheck-clang-language-standard "c++11")))
-;; Turn flycheck on everywhere
-(global-flycheck-mode)
-
-;; clang-format can be triggered using C-c C-f
-(require 'clang-format)
-(global-set-key (kbd "C-c C-v") 'clang-format-region)
-(global-set-key (kbd "C-c C-f") 'clang-format-buffer)
-
-;; Enable semantics mode for auto-completion
-(require 'cc-mode)
-(require 'semantic)
-(global-semanticdb-minor-mode 1)
-(global-semantic-idle-scheduler-mode 1)
-(semantic-mode 1)
-(semantic-remove-system-include "/usr/include/" 'c++-mode)
-(semantic-remove-system-include "/usr/local/include/" 'c++-mode)
-(add-hook 'semantic-init-hooks
-          'semantic-reset-system-include)
-
-(require 'ggtags)
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode)
-              (ggtags-mode 1))))
-
-
-(setq whitespace-line-column 110) ;; limit line length
-
-(require 'modern-cpp-font-lock)
-(modern-c++-font-lock-global-mode t)
-
-;; workaround for projectile bug
-(setq projectile-project-compilation-cmd "")
-
-(scroll-bar-mode -1)
+;; cppmode
+(require 'cppmode)
 
 ;; org mode
 (require 'org)
@@ -103,8 +57,5 @@
 (setq org-hide-leading-stars t)
 ;; end org mode
 
-(require 'cppdoc)
-(cppdoc-mode +1)
-(define-key cppdoc-mode-map (kbd "s-c") 'cppdoc-command-map)
-
+(provide 'personal)
 ;;; personal.el ends here
