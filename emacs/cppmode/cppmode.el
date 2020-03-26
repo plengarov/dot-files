@@ -35,7 +35,8 @@
 (defvar package-list)
 (setq package-list '(clang-format
                      modern-cpp-font-lock
-                     ggtags))
+                     ggtags
+                     google-c-style))
 
 ;; fetch the list of packages available.
 (unless package-archive-contents
@@ -47,14 +48,18 @@
     (package-install package)))
 
 ;; set basic offset
-(defun prelude-c++-mode-common-defaults ()
-  (if (derived-mode-p 'c++-mode)
-    (setq c-default-style "k&r"
-          c-basic-offset 2)
-    (setq c-default-style "k&r"
-          c-basic-offset 4)
-    (c-set-offset 'substatement-open 0)))
-(setq prelude-c-mode-common-hook 'prelude-c++-mode-common-defaults)
+;; (defun prelude-c++-mode-common-defaults ()
+;;   (if (derived-mode-p 'c++-mode)
+;;     (setq c-default-style "k&r"
+;;           c-basic-offset 2)
+;;     (setq c-default-style "k&r"
+;;           c-basic-offset 4)
+;;     (c-set-offset 'substatement-open 0)))
+;; (setq prelude-c-mode-common-hook 'prelude-c++-mode-common-defaults)
+(require 'google-c-style)
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c++-mode-common-hook 'google-set-c-style)
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 ;; Require flycheck to be present.
 (require 'flycheck)
