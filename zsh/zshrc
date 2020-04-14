@@ -19,7 +19,6 @@ export ZSH=~/.oh-my-zsh
 plugins=(
     git
     docker
-    dnf
     lein
     z
 )
