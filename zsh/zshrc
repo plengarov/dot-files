@@ -17,9 +17,10 @@ compinit
 export ZSH=~/.oh-my-zsh
 
 plugins=(
-    git
     docker
+    git
     lein
+    ripgrep
     z
 )
 
