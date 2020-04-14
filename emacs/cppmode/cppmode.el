@@ -101,7 +101,7 @@
 ;; workaround for projectile bug
 (setq projectile-project-compilation-cmd "")
 
-(scroll-bar-mode -1)
+;; (scroll-bar-mode -1)
 
 ;; cppdoc - Doxygen comments
 (require 'cppdoc)
