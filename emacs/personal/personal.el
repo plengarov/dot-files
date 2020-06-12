@@ -57,5 +57,8 @@
 (setq org-hide-leading-stars t)
 ;; end org mode
 
+;; disable scrollbar
+(scroll-bar-mode -1)
+
 (provide 'personal)
 ;;; personal.el ends here

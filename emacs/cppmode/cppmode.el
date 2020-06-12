@@ -36,7 +36,8 @@
 (setq package-list '(clang-format
                      modern-cpp-font-lock
                      ggtags
-                     google-c-style))
+                     google-c-style
+                     meson-mode))
 
 ;; fetch the list of packages available.
 (unless package-archive-contents
