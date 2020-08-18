@@ -32,6 +32,7 @@
 ;;; Code:
 (defvar package-list)
 (setq package-list '(ag
+                     ripgrep
                      org
                      org-bullets))
 
