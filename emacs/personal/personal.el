@@ -61,5 +61,8 @@
 ;; disable scrollbar
 (scroll-bar-mode -1)
 
+;; disable menubar
+(menu-bar-mode -1)
+
 (provide 'personal)
 ;;; personal.el ends here
